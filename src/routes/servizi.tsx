@@ -5,9 +5,9 @@ export const Route = createFileRoute("/servizi")({
   head: () => ({
     meta: [
       { title: "Servizi – Porta Italia" },
-      { name: "description", content: "CAF, Patronato, servizi consolari indiani, pratiche comunali, SPID, INPS, INAIL e CV: tutti i servizi di Porta Italia." },
+      { name: "description", content: "CAF, Patronato, Ambasciate e Consolati di tutti i Paesi, pratiche comunali, SPID, traduzioni e legalizzazioni, INPS e INAIL: tutti i servizi di Porta Italia." },
       { property: "og:title", content: "Tutti i servizi di Porta Italia" },
-      { property: "og:description", content: "Assistenza fiscale, previdenziale, consolare e amministrativa in un unico studio." },
+      { property: "og:description", content: "Assistenza fiscale, previdenziale, consolare, di traduzione e amministrativa in un unico studio." },
     ],
   }),
   component: Servizi,
@@ -16,16 +16,17 @@ export const Route = createFileRoute("/servizi")({
 const AREAS = [
   { t: "CAF – Assistenza Fiscale", d: "Ti aiutiamo a gestire il rapporto con il Fisco in modo corretto e senza stress, recuperando ogni detrazione possibile.", items: ["Modello 730 e Modello Redditi PF", "ISEE ordinario, corrente e universitario", "Dichiarazione RED", "Bonus e agevolazioni fiscali", "IMU e verifica cartelle"] },
   { t: "Patronato", d: "Tuteliamo i tuoi diritti previdenziali e assistenziali, gratuitamente dove previsto dalla legge.", items: ["Domande di pensione", "Invalidità civile e Legge 104", "Maternità e congedi parentali", "Disoccupazione NASpI", "Assegno Unico Universale", "Cittadinanza e permessi di soggiorno"] },
-  { t: "Consolato Indiano", d: "Il punto di riferimento per la comunità indiana: prepariamo e verifichiamo ogni pratica con Ambasciata e Consolati.", items: ["Rinnovo passaporto", "Visti e OCI card", "Legalizzazione documenti", "Procure e attestati"], link: true },
+  { t: "Ambasciate e Consolati", d: "Prepariamo e verifichiamo ogni pratica consolare presso Ambasciate e Consolati di tutti i Paesi, con un'attenzione speciale alla comunità indiana.", items: ["Rinnovo e rilascio passaporto", "Visti e carte consolari", "Legalizzazioni e apostille", "Procure e attestati"], link: true },
   { t: "Burocrazia Locale & Digitale", d: "Dal Comune al mondo digitale: ti guidiamo nelle pratiche di tutti i giorni.", items: ["Cambio residenza e iscrizione anagrafica", "Idoneità alloggiativa", "Certificati e pratiche comunali", "Creazione e attivazione SPID", "Supporto accesso ai portali PA"] },
-  { t: "Lavoro", d: "Supporto per chi lavora, chi cerca lavoro e chi ha bisogno di tutela.", items: ["Pratiche INPS ed estratto contributivo", "Denunce e pratiche INAIL per infortuni", "Posizioni assicurative", "Curriculum Vitae Europeo o personalizzato", "Lettere di presentazione"] },
+  { t: "Traduzione e Legalizzazione Documenti", d: "Documenti pronti per essere usati in Italia o all'estero, senza errori e senza file in ambasciata.", items: ["Traduzioni certificate e asseverate", "Traduzioni giurate in tribunale", "Apostille e legalizzazioni", "Copie conformi e dichiarazioni di conformità", "Interpreti e supporto in sede"] },
+  { t: "Lavoro", d: "Supporto per chi lavora, chi cerca lavoro e chi ha bisogno di tutela.", items: ["Pratiche INPS ed estratto contributivo", "Denunce e pratiche INAIL per infortuni", "Posizioni assicurative"] },
 ];
 
 function Servizi() {
   return (
     <div className="container-page py-16">
       <p className="eyebrow">Servizi</p>
-      <h1 className="mt-3 max-w-2xl text-4xl md:text-5xl">Cinque aree, un'unica squadra al tuo fianco.</h1>
+      <h1 className="mt-3 max-w-2xl text-4xl md:text-5xl">Sei aree, un'unica squadra al tuo fianco.</h1>
       <div className="mt-12 space-y-6">
         {AREAS.map((a, i) => (
           <section key={a.t} id={`area-${i}`} className="scroll-mt-24 grid gap-6 rounded-3xl border border-border bg-card p-8 md:grid-cols-[auto_1fr_1fr]">

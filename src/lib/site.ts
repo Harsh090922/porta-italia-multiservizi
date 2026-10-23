@@ -1,4 +1,4 @@
-import { Landmark, HeartHandshake, Plane, Building2, Fingerprint, FileText, ShieldCheck } from "lucide-react";
+import { Landmark, HeartHandshake, Globe, Building2, Fingerprint, Languages, ShieldCheck } from "lucide-react";
 
 export const CONTACT = {
   phone: "+39 000 000 0000",
@@ -17,10 +17,10 @@ export const CONTACT = {
 export const SERVICES = [
   { icon: Landmark, title: "Servizi CAF", text: "Dichiarazione dei redditi (730, Modello Redditi PF), ISEE, RED, bonus e agevolazioni fiscali." },
   { icon: HeartHandshake, title: "Patronato", text: "Pensioni, invalidità civile, maternità, NASpI, assegno unico, cittadinanza e permessi di soggiorno." },
-  { icon: Plane, title: "Consolato e Ambasciata Indiana", text: "Passaporti, visti, OCI card, legalizzazioni e procure con Ambasciata e Consolati indiani." },
+  { icon: Globe, title: "Ambasciate e Consolati", text: "Passaporti, visti, rinnovi consolari, legalizzazioni e procure presso Ambasciate e Consolati di tutti i Paesi." },
   { icon: Building2, title: "Servizi Comunali", text: "Cambio residenza, idoneità alloggiativa, iscrizione anagrafica, certificati e pratiche locali." },
   { icon: Fingerprint, title: "Assistenza SPID", text: "Creazione, attivazione e gestione della tua Identità Digitale, passo dopo passo." },
-  { icon: FileText, title: "Curriculum Vitae", text: "CV in formato Europeo o personalizzato e lettere di presentazione che fanno la differenza." },
+  { icon: Languages, title: "Traduzione e Legalizzazione Documenti", text: "Traduzioni certificate e giurate, apostille e legalizzazioni per ogni tipo di documento." },
   { icon: ShieldCheck, title: "INPS e INAIL", text: "Pratiche previdenziali, infortuni sul lavoro, estratto conto contributivo e posizioni assicurative." },
 ];
 
