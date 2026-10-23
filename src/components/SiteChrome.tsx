@@ -46,9 +46,11 @@ export function Footer() {
           <p className="mb-3 font-semibold">Servizi</p>
           <ul className="space-y-2 opacity-80">
             <li><Link to="/servizi">CAF e Patronato</Link></li>
-            <li><Link to="/comunita-indiana">Servizi Consolari Indiani</Link></li>
+            <li><Link to="/servizi">Ambasciate e Consolati</Link></li>
+            <li><Link to="/comunita-indiana">Comunità Indiana</Link></li>
             <li><Link to="/servizi">Comune e SPID</Link></li>
-            <li><Link to="/servizi">INPS, INAIL e CV</Link></li>
+            <li><Link to="/servizi">Traduzioni e legalizzazioni</Link></li>
+            <li><Link to="/servizi">INPS e INAIL</Link></li>
           </ul>
         </div>
         <div className="text-sm">
