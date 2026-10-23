@@ -28,7 +28,7 @@ function Servizi() {
       <h1 className="mt-3 max-w-2xl text-4xl md:text-5xl">Cinque aree, un'unica squadra al tuo fianco.</h1>
       <div className="mt-12 space-y-6">
         {AREAS.map((a, i) => (
-          <section key={a.t} className="grid gap-6 rounded-3xl border border-border bg-card p-8 md:grid-cols-[auto_1fr_1fr]">
+          <section key={a.t} id={`area-${i}`} className="scroll-mt-24 grid gap-6 rounded-3xl border border-border bg-card p-8 md:grid-cols-[auto_1fr_1fr]">
             <span className="font-display text-5xl text-accent">0{i + 1}</span>
             <div><h2 className="text-2xl md:text-3xl">{a.t}</h2><p className="mt-3 text-muted-foreground">{a.d}</p>
               {a.link && <Link to="/comunita-indiana" className="mt-4 inline-block font-semibold text-primary underline">Pagina dedicata / Dedicated page →</Link>}
