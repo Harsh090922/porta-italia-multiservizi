@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ContattiRouteImport } from './routes/contatti'
 import { Route as ServiziRouteImport } from './routes/servizi'
+import { Route as ServiziSlugRouteImport } from './routes/servizi_.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -28,35 +29,44 @@ const ServiziRoute = ServiziRouteImport.update({
   path: '/servizi',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServiziSlugRoute = ServiziSlugRouteImport.update({
+  id: '/servizi_/$slug',
+  path: '/servizi/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/contatti': typeof ContattiRoute
   '/servizi': typeof ServiziRoute
+  '/servizi/$slug': typeof ServiziSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contatti': typeof ContattiRoute
   '/servizi': typeof ServiziRoute
+  '/servizi/$slug': typeof ServiziSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/contatti': typeof ContattiRoute
   '/servizi': typeof ServiziRoute
+  '/servizi_/$slug': typeof ServiziSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/contatti' | '/servizi'
+  fullPaths: '/' | '/contatti' | '/servizi' | '/servizi/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contatti' | '/servizi'
-  id: '__root__' | '/' | '/contatti' | '/servizi'
+  to: '/' | '/contatti' | '/servizi' | '/servizi/$slug'
+  id: '__root__' | '/' | '/contatti' | '/servizi' | '/servizi_/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ContattiRoute: typeof ContattiRoute
   ServiziRoute: typeof ServiziRoute
+  ServiziSlugRoute: typeof ServiziSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -82,6 +92,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServiziRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/servizi_/$slug': {
+      id: '/servizi_/$slug'
+      path: '/servizi/$slug'
+      fullPath: '/servizi/$slug'
+      preLoaderRoute: typeof ServiziSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -89,6 +106,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ContattiRoute: ContattiRoute,
   ServiziRoute: ServiziRoute,
+  ServiziSlugRoute: ServiziSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
