@@ -59,7 +59,7 @@ function Index() {
         <h2 className="mt-3 text-3xl md:text-4xl">Tutto ciò che ti serve, in un solo posto.</h2>
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {SERVICES.map(({ icon: I, title, text }, idx) => (
-            <Link key={title} to="/servizi" hash={`area-${[0, 1, 2, 3, 3, 4, 5][idx] ?? 0}`} className="group block rounded-2xl border border-border bg-card p-6 transition hover:-translate-y-1 hover:border-accent hover:shadow-lg">
+            <Link key={title} to="/servizi" hash={`area-${[0, 1, 2, 3, 3, 4, 5, 6, 7][idx] ?? 0}`} className="group block rounded-2xl border border-border bg-card p-6 transition hover:-translate-y-1 hover:border-accent hover:shadow-lg">
               <I className="h-8 w-8 text-accent" />
               <h3 className="mt-4 text-xl">{title}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{text}</p>
