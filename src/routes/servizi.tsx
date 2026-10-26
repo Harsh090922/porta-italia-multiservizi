@@ -33,7 +33,9 @@ function Servizi() {
         {AREAS.map((a, i) => (
           <section key={a.t} id={`area-${i}`} className="scroll-mt-24 grid gap-6 rounded-3xl border border-border bg-card p-8 md:grid-cols-[auto_1fr_1fr]">
             <span className="font-display text-5xl text-accent">0{i + 1}</span>
-            <div><h2 className="text-2xl md:text-3xl">{a.t}</h2><p className="mt-3 text-muted-foreground">{a.d}</p></div>
+            <div><h2 className="text-2xl md:text-3xl">{a.t}</h2><p className="mt-3 text-muted-foreground">{a.d}</p>
+              {(i === 1 || i === 2) && <Link to="/contatti" hash="aziende" className="mt-5 inline-block rounded-full bg-accent px-5 py-2.5 font-semibold text-accent-foreground">Richiedi informazioni per la tua azienda →</Link>}
+            </div>
             <ul className="space-y-2">{a.items.map((it) => <li key={it} className="flex gap-2"><Check className="mt-0.5 h-5 w-5 shrink-0 text-primary" />{it}</li>)}</ul>
           </section>
         ))}
