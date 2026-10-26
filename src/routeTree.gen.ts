@@ -10,18 +10,12 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ComunitaIndianaRouteImport } from './routes/comunita-indiana'
 import { Route as ContattiRouteImport } from './routes/contatti'
 import { Route as ServiziRouteImport } from './routes/servizi'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ComunitaIndianaRoute = ComunitaIndianaRouteImport.update({
-  id: '/comunita-indiana',
-  path: '/comunita-indiana',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContattiRoute = ContattiRouteImport.update({
@@ -37,34 +31,30 @@ const ServiziRoute = ServiziRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/comunita-indiana': typeof ComunitaIndianaRoute
   '/contatti': typeof ContattiRoute
   '/servizi': typeof ServiziRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/comunita-indiana': typeof ComunitaIndianaRoute
   '/contatti': typeof ContattiRoute
   '/servizi': typeof ServiziRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/comunita-indiana': typeof ComunitaIndianaRoute
   '/contatti': typeof ContattiRoute
   '/servizi': typeof ServiziRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/comunita-indiana' | '/contatti' | '/servizi'
+  fullPaths: '/' | '/contatti' | '/servizi'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/comunita-indiana' | '/contatti' | '/servizi'
-  id: '__root__' | '/' | '/comunita-indiana' | '/contatti' | '/servizi'
+  to: '/' | '/contatti' | '/servizi'
+  id: '__root__' | '/' | '/contatti' | '/servizi'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  ComunitaIndianaRoute: typeof ComunitaIndianaRoute
   ContattiRoute: typeof ContattiRoute
   ServiziRoute: typeof ServiziRoute
 }
@@ -76,13 +66,6 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/comunita-indiana': {
-      id: '/comunita-indiana'
-      path: '/comunita-indiana'
-      fullPath: '/comunita-indiana'
-      preLoaderRoute: typeof ComunitaIndianaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contatti': {
@@ -104,7 +87,6 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  ComunitaIndianaRoute: ComunitaIndianaRoute,
   ContattiRoute: ContattiRoute,
   ServiziRoute: ServiziRoute,
 }

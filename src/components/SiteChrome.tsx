@@ -5,7 +5,6 @@ import { CONTACT } from "@/lib/site";
 const NAV = [
   { to: "/", label: "Home" },
   { to: "/servizi", label: "Servizi" },
-  { to: "/comunita-indiana", label: "Comunità Indiana" },
   { to: "/contatti", label: "Contatti" },
 ] as const;
 
@@ -45,12 +44,13 @@ export function Footer() {
         <div className="text-sm">
           <p className="mb-3 font-semibold">Servizi</p>
           <ul className="space-y-2 opacity-80">
-            <li><Link to="/servizi">CAF e Patronato</Link></li>
             <li><Link to="/servizi">Ambasciate e Consolati</Link></li>
-            <li><Link to="/comunita-indiana">Comunità Indiana</Link></li>
+            <li><Link to="/servizi">Servizi UniCom</Link></li>
+            <li><Link to="/servizi">Mobilità aziendale e Carta Blu</Link></li>
             <li><Link to="/servizi">Comune e SPID</Link></li>
             <li><Link to="/servizi">Traduzioni e legalizzazioni</Link></li>
             <li><Link to="/servizi">INPS e INAIL</Link></li>
+            <li><Link to="/servizi">CAF e Patronato</Link></li>
           </ul>
         </div>
         <div className="text-sm">
