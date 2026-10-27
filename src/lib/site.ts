@@ -1,4 +1,5 @@
 import { Landmark, HeartHandshake, Globe, Building2, Fingerprint, Languages, ShieldCheck, ClipboardCheck, CarFront } from "lucide-react";
+import { SERVICE_DETAILS } from "./service-details";
 
 export const CONTACT = {
   phone: "+39 000 000 0000",
@@ -14,7 +15,7 @@ export const CONTACT = {
   ],
 };
 
-export const SERVICES = [
+const SERVICE_SUMMARIES = [
   { icon: Globe, title: "Ambasciate e Consolati", text: "Passaporti, visti, rinnovi consolari, legalizzazioni e procure presso Ambasciate e Consolati di tutti i Paesi." },
   { icon: ClipboardCheck, title: "Servizi UniCom", text: "Comunicazioni obbligatorie, assunzioni, trasformazioni e adempimenti telematici per datori di lavoro." },
   { icon: CarFront, title: "Mobilità Aziendale e Carta Blu", text: "Carta Blu UE, distacchi e pratiche di mobilità internazionale del personale per le aziende." },
@@ -25,5 +26,10 @@ export const SERVICES = [
   { icon: Landmark, title: "Servizi CAF", text: "Dichiarazione dei redditi (730, Modello Redditi PF), ISEE, RED, bonus e agevolazioni fiscali." },
   { icon: HeartHandshake, title: "Patronato", text: "Pensioni, invalidità civile, maternità, NASpI, assegno unico, cittadinanza e permessi di soggiorno." },
 ];
+
+export const SERVICES = SERVICE_SUMMARIES.map((service, index) => ({
+  ...service,
+  slug: SERVICE_DETAILS[index]?.slug ?? "",
+}));
 
 export const SERVICE_OPTIONS = SERVICES.map((s) => s.title);

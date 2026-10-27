@@ -1,0 +1,2 @@
+- [ ] Collegare tutte le schede alle nove pagine dedicate.
+- [ ] Verificare pagine, dettagli e collegamenti ai moduli di contatto.

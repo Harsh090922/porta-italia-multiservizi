@@ -10,6 +10,8 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Assistenza fiscale, patronato, pratiche comunali, SPID, traduzioni e servizi consolari per Ambasciate e Consolati di tutti i Paesi. Semplice, chiaro, vicino a te." },
       { property: "og:title", content: "Porta Italia – Burocrazia semplice, per tutti" },
       { property: "og:description", content: "CAF, Patronato, SPID, Comune, traduzioni e servizi consolari in un unico studio." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Index,
@@ -58,8 +60,8 @@ function Index() {
         <p className="eyebrow">I nostri servizi</p>
         <h2 className="mt-3 text-3xl md:text-4xl">Tutto ciò che ti serve, in un solo posto.</h2>
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {SERVICES.map(({ icon: I, title, text }, idx) => (
-            <Link key={title} to="/servizi" hash={`area-${[0, 1, 2, 3, 3, 4, 5, 6, 7][idx] ?? 0}`} className="group block rounded-2xl border border-border bg-card p-6 transition hover:-translate-y-1 hover:border-accent hover:shadow-lg">
+          {SERVICES.map(({ icon: I, title, text, slug }) => (
+            <Link key={title} to="/servizi/$slug" params={{ slug }} className="group block rounded-2xl border border-border bg-card p-6 transition hover:-translate-y-1 hover:border-accent hover:shadow-lg">
               <I className="h-8 w-8 text-accent" />
               <h3 className="mt-4 text-xl">{title}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{text}</p>

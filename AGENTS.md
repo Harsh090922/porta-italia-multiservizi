@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep service detail content in `src/lib/service-details.ts` and reuse its slugs for catalogue and homepage links so all service entry points open the same dedicated pages.
