@@ -10,6 +10,8 @@ export const Route = createFileRoute("/contatti")({
       { name: "description", content: "Prenota una consulenza con Porta Italia: modulo di contatto, WhatsApp e telefono." },
       { property: "og:title", content: "Contatta Porta Italia" },
       { property: "og:description", content: "Scrivici, chiamaci o mandaci un WhatsApp: ti rispondiamo in giornata." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Contatti,
