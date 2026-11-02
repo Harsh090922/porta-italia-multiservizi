@@ -76,11 +76,11 @@ function Index() {
 
       <section className="bg-primary py-20 text-primary-foreground">
         <div className="container-page">
-          <p className="eyebrow">Perché sceglierci</p>
+          <p className="eyebrow-on-primary">Perché sceglierci</p>
           <h2 className="mt-3 text-3xl md:text-4xl">Fiducia che si costruisce, pratica dopo pratica.</h2>
           <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {WHY.map(({ icon: I, t, d }) => (
-              <div key={t}><I className="h-7 w-7 text-accent" /><h3 className="mt-3 text-xl">{t}</h3><p className="mt-2 text-sm opacity-80">{d}</p></div>
+              <div key={t}><I className="h-7 w-7 text-accent-on-primary" /><h3 className="mt-3 text-xl">{t}</h3><p className="mt-2 text-sm opacity-80">{d}</p></div>
             ))}
           </div>
         </div>

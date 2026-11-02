@@ -38,7 +38,7 @@ export function Footer() {
     <footer className="mt-24 bg-primary text-primary-foreground">
       <div className="container-page grid gap-10 py-14 md:grid-cols-4">
         <div>
-          <p className="font-display text-2xl">Porta<span className="text-accent">Italia</span></p>
+          <p className="font-display text-2xl">Porta<span className="text-accent-on-primary">Italia</span></p>
           <p className="mt-3 text-sm opacity-80">La tua porta d'accesso semplice alla burocrazia italiana.</p>
         </div>
         <div className="text-sm">
