@@ -32,4 +32,26 @@ export const SERVICES = SERVICE_SUMMARIES.map((service, index) => ({
   slug: SERVICE_DETAILS[index]?.slug ?? "",
 }));
 
+const SUMMARIES_EN = [
+  ["Embassies & Consulates", "Passports, visas, consular renewals, legalisations and powers of attorney with the embassies and consulates of every country."],
+  ["UniCom Services", "Mandatory employment notifications, new hires, contract changes and online filings for employers."],
+  ["Corporate Mobility & EU Blue Card", "EU Blue Card, secondments and international staff mobility procedures for companies."],
+  ["Town Hall Services", "Change of address, housing suitability, registry enrolment, certificates and local paperwork."],
+  ["SPID Digital Identity", "Setting up, activating and managing your digital identity, step by step."],
+  ["Document Translation & Legalisation", "Certified and sworn translations, apostilles and legalisations for any type of document."],
+  ["INPS & INAIL", "Social security matters, workplace injuries, contribution statements and insurance records."],
+  ["CAF Tax Assistance", "Tax returns (730, Modello Redditi), ISEE, RED, tax credits and benefits."],
+  ["Patronato – Welfare & Pensions", "Pensions, civil disability, maternity, NASpI, child allowance, citizenship and residence permits."],
+];
+
+export const getServices = (lang: "it" | "en") =>
+  lang === "en" ? SERVICES.map((s, i) => ({ ...s, title: SUMMARIES_EN[i][0], text: SUMMARIES_EN[i][1] })) : SERVICES;
+
+export const HOURS_EN = [
+  ["Monday – Friday", "9:00 – 13:00 · 15:00 – 19:00"],
+  ["Saturday", "9:00 – 13:00"],
+  ["Sunday", "Closed"],
+];
+export const getHours = (lang: "it" | "en") => (lang === "en" ? HOURS_EN : CONTACT.hours);
+
 export const SERVICE_OPTIONS = SERVICES.map((s) => s.title);
