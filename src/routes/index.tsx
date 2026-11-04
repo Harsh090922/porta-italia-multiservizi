@@ -35,8 +35,7 @@ function Index() {
     <>
       <section className="container-page grid items-center gap-12 py-16 md:grid-cols-2 md:py-24">
         <div>
-          <p className="eyebrow">CAF · Patronato · Servizi Consolari</p>
-          <h1 className="mt-4 text-4xl leading-tight md:text-6xl">La tua porta verso una burocrazia <em className="text-accent">semplice</em>.</h1>
+          <h1 className="text-4xl leading-tight md:text-6xl">La tua porta verso una burocrazia <em className="text-accent">semplice</em>.</h1>
           <p className="mt-6 max-w-lg text-lg text-muted-foreground">Fisco, pensioni, permessi, SPID, traduzioni e pratiche consolari presso Ambasciate e Consolati di tutti i Paesi: ci occupiamo noi delle carte, tu pensa a ciò che conta.</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link to="/contatti" className="rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground hover:opacity-90">Prenota una Consulenza</Link>
