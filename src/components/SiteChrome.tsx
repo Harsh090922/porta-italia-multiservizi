@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { MessageCircle, Phone } from "lucide-react";
 import { CONTACT } from "@/lib/site";
+import { LanguageToggle } from "./LanguageToggle";
 
 const NAV = [
   { to: "/", label: "Home" },
@@ -22,9 +23,12 @@ export function Header() {
             </Link>
           ))}
         </nav>
-        <Link to="/contatti" className="rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:opacity-90">
-          Prenota
-        </Link>
+        <div className="flex items-center gap-4">
+          <LanguageToggle />
+          <Link to="/contatti" className="rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:opacity-90">
+            Prenota
+          </Link>
+        </div>
       </div>
       <nav className="container-page flex gap-4 overflow-x-auto pb-2 text-sm md:hidden">
         {NAV.map((n) => <Link key={n.to} to={n.to} className="whitespace-nowrap text-muted-foreground">{n.label}</Link>)}
