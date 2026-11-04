@@ -93,3 +93,91 @@ export const STEPS = [
   ["Pratica", "Compiliamo e inviamo la pratica agli enti, seguendo ogni passaggio."],
   ["Esito", "Ti aggiorniamo fino alla conclusione e alla consegna."],
 ] as const;
+
+export const SERVICE_DETAILS_EN: ServiceDetail[] = [
+  {
+    slug: "ambasciate-consolati",
+    title: "Embassies & Consulates",
+    intro: "We prepare, check and follow up your consular applications with the embassies and consulates of every country represented in Italy — so you avoid mistakes, delays and missed appointments.",
+    audience: ["Foreign nationals living in Italy", "Italians who need to submit documents to another country", "Families handling applications for children"],
+    items: ["Passport issue and renewal", "Tourist, study and work visas", "Booking consular appointments", "General and special powers of attorney", "Civil status certificates and certificates of no impediment to marriage", "Legalisation of documents at the consulate", "Completing online consular portal forms"],
+    documents: ["ID card or passport (expired ones are fine)", "Residence permit, for non-Italian citizens", "Passport photos meeting the consulate's requirements", "Any documents specific to your application (records, certificates)"],
+    notes: "Requirements, consular fees and processing times differ from country to country — we'll give you an exact checklist at our first contact.",
+  },
+  {
+    slug: "unicom",
+    title: "UniCom Services",
+    intro: "We handle your company's mandatory employment notifications to the Job Centres and the Ministry of Labour, always within the legal deadlines.",
+    audience: ["Companies and employers", "Families hiring domestic workers and carers", "Self-employed professionals with staff"],
+    items: ["New hire notifications (by the day before the start date)", "Contract extensions and conversions", "Terminations of employment", "Notifications for on-call and agency work", "Internships and secondments", "Deadline monitoring to avoid penalties"],
+    documents: ["Company details and Chamber of Commerce extract", "Employee's ID and Italian tax code", "Residence permit for non-EU employees", "Contract details (type, hours, collective agreement, pay)"],
+    business: true,
+  },
+  {
+    slug: "carta-blu-mobilita",
+    title: "Corporate Mobility & EU Blue Card",
+    intro: "We support companies in hiring and relocating skilled international staff, from the EU Blue Card to the work authorisation.",
+    audience: ["Companies hiring highly skilled non-EU workers", "Groups with intra-company transfers", "HR departments and consultancy firms"],
+    items: ["EU Blue Card applications for highly qualified workers", "Work authorisation (nulla osta) through the Immigration Office", "International secondments and staff transfers", "Checks on salary thresholds and qualifications", "Family reunification for the employee", "Residence permit issue and renewal"],
+    documents: ["Chamber of Commerce extract and company details", "Job offer or assignment letter", "Employee's passport", "Degree certificate and, where needed, Declaration of Value", "CV and proof of work experience"],
+    business: true,
+  },
+  {
+    slug: "comunali",
+    title: "Town Hall Services",
+    intro: "We guide you through your dealings with the Comune — from registering your address to obtaining certificates — so you don't waste time queuing and filling in forms.",
+    audience: ["People moving home or to a new city", "Foreign nationals who have just arrived", "Families preparing for family reunification"],
+    items: ["Change of address and registry registration", "Housing suitability certificate (idoneità alloggiativa)", "Registry and civil status certificates", "Family status certificate and self-declarations", "Electronic ID card applications"],
+    documents: ["ID document", "Italian tax code", "Rental agreement or title deed", "Floor plan of the property (for the housing certificate)"],
+  },
+  {
+    slug: "spid",
+    title: "SPID Digital Identity",
+    intro: "We set up and activate your SPID digital identity with you, giving you access to online services from INPS, the Revenue Agency, your Comune and the health service.",
+    audience: ["Anyone who doesn't have SPID yet", "People who have lost their login details", "Those less confident with technology"],
+    items: ["SPID creation and identity verification", "Setting up the app on your smartphone", "Password recovery and account unlocking", "Guided first login to public administration portals"],
+    documents: ["Valid ID document", "Health card / Italian tax code", "Personal email address", "Smartphone with an active mobile number"],
+  },
+  {
+    slug: "traduzioni-legalizzazioni",
+    title: "Document Translation & Legalisation",
+    intro: "We make your documents valid in Italy and abroad, with certified and sworn translations, apostilles and legalisations.",
+    audience: ["Anyone submitting foreign documents in Italy", "Anyone using Italian documents abroad", "Companies with international paperwork"],
+    items: ["Certified translations", "Sworn translations filed at the Court", "Hague Apostille", "Legalisation at the Prefecture and at consulates", "Diplomas, birth and marriage certificates, criminal records, driving licences", "Certified true copies"],
+    documents: ["Original document to be translated", "Destination country and receiving authority", "Applicant's ID document"],
+  },
+  {
+    slug: "inps-inail",
+    title: "INPS & INAIL",
+    intro: "We review your social security contributions and help you with workplace injury and occupational illness claims.",
+    audience: ["Employees and self-employed workers", "Anyone injured at work", "Anyone wanting to check their contributions"],
+    items: ["Social security contribution statement", "Combining contributions from different schemes", "Reporting workplace injuries and occupational illnesses", "INAIL compensation and annuities", "Checking and correcting your insurance record"],
+    documents: ["ID document and Italian tax code", "SPID login (or we'll set it up for you)", "Medical certificates, for INAIL claims", "Payslips or CU statements for the relevant years"],
+  },
+  {
+    slug: "caf",
+    title: "CAF Tax Assistance",
+    intro: "We handle your tax matters accurately and stress-free, making sure you claim every deduction you're entitled to.",
+    audience: ["Employees and pensioners", "Families applying for benefits and allowances", "Property owners"],
+    items: ["Form 730 tax return, individual or joint", "Modello Redditi (personal income tax return)", "ISEE: standard, current, university and social-care", "RED income declaration", "IMU property tax and F24 payments", "Reviewing tax bills and notices"],
+    documents: ["ID document and Italian tax code", "Certificazione Unica (CU)", "Medical, school and other deductible expenses", "Rental agreement or land registry details", "Bank balances and average holdings (for ISEE)"],
+  },
+  {
+    slug: "patronato",
+    title: "Patronato – Welfare & Pensions",
+    intro: "We protect your pension and welfare rights, free of charge wherever the law provides.",
+    audience: ["Workers and the unemployed", "Pensioners and those about to retire", "Families with children", "People with disabilities"],
+    items: ["Pension applications (old-age, early retirement, survivor's)", "Civil disability and Law 104 benefits", "Maternity and parental leave", "NASpI and DIS-COLL unemployment benefits", "Universal Child Allowance (Assegno Unico)", "Citizenship and residence permits"],
+    documents: ["ID document and Italian tax code", "SPID login", "Employment or medical records related to your application", "ISEE, for some benefits"],
+  },
+];
+
+export const STEPS_EN = [
+  ["Get in touch", "Message us or book an appointment — we'll quickly understand what you need."],
+  ["Documents", "We give you an exact list of documents and check them together with you."],
+  ["Application", "We complete and submit your application, following every step with the authorities."],
+  ["Outcome", "We keep you updated right through to completion and delivery."],
+] as const;
+
+export const getServiceDetails = (lang: "it" | "en") => (lang === "en" ? SERVICE_DETAILS_EN : SERVICE_DETAILS);
+export const getSteps = (lang: "it" | "en") => (lang === "en" ? STEPS_EN : STEPS);

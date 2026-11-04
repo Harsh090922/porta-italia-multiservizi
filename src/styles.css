@@ -161,7 +161,3 @@
 @utility eyebrow { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); }
 @utility eyebrow-on-primary { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-on-primary); }
 
-/* Hide Google Translate banner/tooltips */
-.goog-te-banner-frame, .skiptranslate iframe, #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
-body { top: 0 !important; }
-.goog-text-highlight { background: none !important; box-shadow: none !important; }
