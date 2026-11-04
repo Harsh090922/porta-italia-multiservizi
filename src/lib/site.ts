@@ -45,7 +45,7 @@ const SUMMARIES_EN = [
 ];
 
 export const getServices = (lang: "it" | "en") =>
-  lang === "en" ? SERVICES.map((s, i) => ({ ...s, title: SUMMARIES_EN[i][0], text: SUMMARIES_EN[i][1] })) : SERVICES;
+  lang === "en" ? SERVICES.map((s, i) => ({ ...s, title: SUMMARIES_EN[i]?.[0] ?? s.title, text: SUMMARIES_EN[i]?.[1] ?? s.text })) : SERVICES;
 
 export const HOURS_EN = [
   ["Monday – Friday", "9:00 – 13:00 · 15:00 – 19:00"],
