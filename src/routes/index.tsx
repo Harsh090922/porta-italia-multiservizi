@@ -51,7 +51,7 @@ function Index() {
           <div><p className="eyebrow">Chi siamo</p><h2 className="mt-3 text-3xl md:text-4xl">Un unico sportello, tante risposte.</h2></div>
           <div className="space-y-4 text-lg text-muted-foreground">
             <p>Porta Italia è uno studio multiservizi che accompagna cittadini italiani e stranieri in ogni pratica fiscale, previdenziale e amministrativa.</p>
-            <p>La nostra missione è semplice: trasformare procedure complesse in passaggi chiari, con trasparenza, ascolto e un'attenzione speciale alla comunità indiana in Italia.</p>
+            <p>La nostra missione è semplice: trasformare procedure complesse in passaggi chiari, con trasparenza, ascolto e un'attenzione speciale alle comunità straniere in Italia.</p>
           </div>
         </div>
       </section>
