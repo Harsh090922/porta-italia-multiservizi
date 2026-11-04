@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Check } from "lucide-react";
-import { SERVICE_DETAILS } from "@/lib/service-details";
+import { getServiceDetails } from "@/lib/service-details";
+import { useLang } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/servizi")({
@@ -18,23 +19,24 @@ export const Route = createFileRoute("/servizi")({
 });
 
 function Servizi() {
+  const { lang, t } = useLang();
   return (
     <div className="container-page py-16">
-      <p className="eyebrow">Servizi</p>
-      <h1 className="mt-3 max-w-2xl text-4xl md:text-5xl">Nove servizi, un'unica squadra al tuo fianco.</h1>
+      <p className="eyebrow">{t("Servizi", "Services")}</p>
+      <h1 className="mt-3 max-w-2xl text-4xl md:text-5xl">{t("Nove servizi, un'unica squadra al tuo fianco.", "Nine services, one team by your side.")}</h1>
       <div className="mt-12 space-y-6">
-        {SERVICE_DETAILS.map((a, i) => (
+        {getServiceDetails(lang).map((a, i) => (
           <section key={a.slug} id={`area-${i}`} className="scroll-mt-24 grid gap-6 border-b border-border py-8 md:grid-cols-[auto_1fr_1fr]">
             <span className="font-display text-5xl text-accent">0{i + 1}</span>
             <div><h2 className="text-2xl md:text-3xl"><Link to="/servizi/$slug" params={{ slug: a.slug }} className="hover:text-accent">{a.title}</Link></h2><p className="mt-3 text-muted-foreground">{a.intro}</p>
-              <Button asChild variant="link" className="mt-3 h-auto justify-start whitespace-normal px-0 text-left"><Link to="/servizi/$slug" params={{ slug: a.slug }}>Scopri tutti i dettagli <ArrowRight /></Link></Button>
-              {a.business && <Button asChild variant="outline" className="mt-3 h-auto whitespace-normal py-3 text-left"><Link to="/contatti" hash="aziende">Richiedi informazioni per la tua azienda <ArrowRight /></Link></Button>}
+              <Button asChild variant="link" className="mt-3 h-auto justify-start whitespace-normal px-0 text-left"><Link to="/servizi/$slug" params={{ slug: a.slug }}>{t("Scopri tutti i dettagli", "See all the details")} <ArrowRight /></Link></Button>
+              {a.business && <Button asChild variant="outline" className="mt-3 h-auto whitespace-normal py-3 text-left"><Link to="/contatti" hash="aziende">{t("Richiedi informazioni per la tua azienda", "Request information for your company")} <ArrowRight /></Link></Button>}
             </div>
             <ul className="space-y-2">{a.items.slice(0, 4).map((it) => <li key={it} className="flex gap-2"><Check className="mt-0.5 h-5 w-5 shrink-0 text-primary" />{it}</li>)}</ul>
           </section>
         ))}
       </div>
-      <div className="mt-12 text-center"><Button asChild size="lg"><Link to="/contatti">Prenota una Consulenza</Link></Button></div>
+      <div className="mt-12 text-center"><Button asChild size="lg"><Link to="/contatti">{t("Prenota una Consulenza", "Book a Consultation")}</Link></Button></div>
     </div>
   );
 }
