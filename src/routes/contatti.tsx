@@ -53,10 +53,25 @@ function Contatti() {
         </div>
         <select className={field} value={f.servizio} onChange={set("servizio")}>{options.map((s) => <option key={s}>{s}</option>)}</select>
         <textarea required rows={5} placeholder={t("Come possiamo aiutarti?", "How can we help you?")} className={field} value={f.messaggio} onChange={set("messaggio")} />
+        <Consent />
         <button className="w-full rounded-full bg-primary py-3 font-semibold text-primary-foreground hover:opacity-90">{t("Invia richiesta", "Send request")}</button>
       </form>
       <BusinessForm />
     </div>
+  );
+}
+
+function Consent() {
+  const { t } = useLang();
+  return (
+    <label className="flex items-start gap-3 text-sm text-muted-foreground">
+      <input required type="checkbox" className="mt-1 h-4 w-4 accent-primary" />
+      <span>
+        {t("Ho letto l'", "I have read the ")}
+        <Link to="/privacy" target="_blank" className="font-medium text-primary underline">{t("informativa privacy", "privacy policy")}</Link>
+        {t(" e acconsento al trattamento dei miei dati per ricevere una risposta alla richiesta.", " and consent to the processing of my data to receive a reply to my request.")}
+      </span>
+    </label>
   );
 }
 
@@ -96,6 +111,7 @@ function BusinessForm() {
         <select className={field} value={f.ambito} onChange={set("ambito")}>{topics.map((s) => <option key={s}>{s}</option>)}</select>
         <input type="number" min={1} placeholder={t("N. lavoratori coinvolti (facoltativo)", "No. of workers involved (optional)")} className={field} value={f.dipendenti} onChange={set("dipendenti")} />
         <textarea required rows={4} maxLength={2000} placeholder={t("Descrivi la tua richiesta", "Describe your request")} className={field} value={f.messaggio} onChange={set("messaggio")} />
+        <Consent />
         <button className="w-full rounded-full bg-primary py-3 font-semibold text-primary-foreground hover:opacity-90">{t("Richiedi informazioni", "Request information")}</button>
       </form>
     </section>

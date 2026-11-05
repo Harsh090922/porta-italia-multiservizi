@@ -74,7 +74,7 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-primary-foreground/15 py-5 text-center text-xs opacity-70">
-        © {new Date().getFullYear()} PraticheItalia · Privacy Policy · Cookie Policy
+        © {new Date().getFullYear()} PraticheItalia · <Link to="/privacy" className="underline-offset-2 hover:underline">{t("Informativa Privacy e Cookie", "Privacy & Cookie Policy")}</Link>
       </div>
     </footer>
   );
