@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { MessageCircle, Phone, Mail, MapPin } from "lucide-react";
 import { CONTACT, SERVICE_OPTIONS, getServices } from "@/lib/site";
