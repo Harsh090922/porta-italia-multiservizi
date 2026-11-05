@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ContattiRouteImport } from './routes/contatti'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ServiziRouteImport } from './routes/servizi'
 import { Route as ServiziSlugRouteImport } from './routes/servizi_.$slug'
 
@@ -22,6 +23,11 @@ const IndexRoute = IndexRouteImport.update({
 const ContattiRoute = ContattiRouteImport.update({
   id: '/contatti',
   path: '/contatti',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServiziRoute = ServiziRouteImport.update({
@@ -38,12 +44,14 @@ const ServiziSlugRoute = ServiziSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/contatti': typeof ContattiRoute
+  '/privacy': typeof PrivacyRoute
   '/servizi': typeof ServiziRoute
   '/servizi/$slug': typeof ServiziSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contatti': typeof ContattiRoute
+  '/privacy': typeof PrivacyRoute
   '/servizi': typeof ServiziRoute
   '/servizi/$slug': typeof ServiziSlugRoute
 }
@@ -51,20 +59,23 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/contatti': typeof ContattiRoute
+  '/privacy': typeof PrivacyRoute
   '/servizi': typeof ServiziRoute
   '/servizi_/$slug': typeof ServiziSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/contatti' | '/servizi' | '/servizi/$slug'
+  fullPaths: '/' | '/contatti' | '/privacy' | '/servizi' | '/servizi/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contatti' | '/servizi' | '/servizi/$slug'
-  id: '__root__' | '/' | '/contatti' | '/servizi' | '/servizi_/$slug'
+  to: '/' | '/contatti' | '/privacy' | '/servizi' | '/servizi/$slug'
+  id:
+    '__root__' | '/' | '/contatti' | '/privacy' | '/servizi' | '/servizi_/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ContattiRoute: typeof ContattiRoute
+  PrivacyRoute: typeof PrivacyRoute
   ServiziRoute: typeof ServiziRoute
   ServiziSlugRoute: typeof ServiziSlugRoute
 }
@@ -83,6 +94,13 @@ declare module '@tanstack/react-router' {
       path: '/contatti'
       fullPath: '/contatti'
       preLoaderRoute: typeof ContattiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/servizi': {
@@ -105,6 +123,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ContattiRoute: ContattiRoute,
+  PrivacyRoute: PrivacyRoute,
   ServiziRoute: ServiziRoute,
   ServiziSlugRoute: ServiziSlugRoute,
 }
