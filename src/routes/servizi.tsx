@@ -7,9 +7,9 @@ import { Button } from "@/components/ui/button";
 export const Route = createFileRoute("/servizi")({
   head: () => ({
     meta: [
-      { title: "Servizi – Porta Italia" },
-      { name: "description", content: "Ambasciate e Consolati di tutti i Paesi, UniCom, mobilità aziendale e Carta Blu, Comune, SPID, traduzioni, INPS e INAIL, CAF e Patronato: scopri i nove servizi di Porta Italia." },
-      { property: "og:title", content: "Tutti i servizi di Porta Italia" },
+      { title: "Servizi – PraticheItalia" },
+      { name: "description", content: "Ambasciate e Consolati di tutti i Paesi, UniCom, mobilità aziendale e Carta Blu, Comune, SPID, traduzioni, INPS e INAIL, CAF e Patronato: scopri i nove servizi di PraticheItalia." },
+      { property: "og:title", content: "Tutti i servizi di PraticheItalia" },
       { property: "og:description", content: "Assistenza fiscale, previdenziale, consolare, di traduzione e amministrativa in un unico studio." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

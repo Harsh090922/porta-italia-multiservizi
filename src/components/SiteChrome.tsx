@@ -20,7 +20,7 @@ export function Header() {
     <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur">
       <div className="container-page flex h-16 items-center justify-between gap-4">
         <Link to="/" className="font-display text-xl font-semibold text-primary">
-          Porta<span className="text-accent">Italia</span>
+          Pratiche<span className="text-accent">Italia</span>
         </Link>
         <nav className="hidden gap-6 text-sm font-medium md:flex">
           {NAV.map((n) => (
@@ -49,8 +49,8 @@ export function Footer() {
     <footer className="mt-24 bg-primary text-primary-foreground">
       <div className="container-page grid gap-10 py-14 md:grid-cols-4">
         <div>
-          <p className="font-display text-2xl">Porta<span className="text-accent-on-primary">Italia</span></p>
-          <p className="mt-3 text-sm opacity-80">{t("La tua porta d'accesso semplice alla burocrazia italiana.", "Your easy way through Italian bureaucracy.")}</p>
+          <p className="font-display text-2xl">Pratiche<span className="text-accent-on-primary">Italia</span></p>
+          <p className="mt-3 text-sm opacity-80">{t("Il tuo accesso semplice alla burocrazia italiana.", "Your easy way through Italian bureaucracy.")}</p>
         </div>
         <div className="text-sm">
           <p className="mb-3 font-semibold">{t("Servizi", "Services")}</p>
@@ -74,7 +74,7 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-primary-foreground/15 py-5 text-center text-xs opacity-70">
-        © {new Date().getFullYear()} Porta Italia · Privacy Policy · Cookie Policy
+        © {new Date().getFullYear()} PraticheItalia · Privacy Policy · Cookie Policy
       </div>
     </footer>
   );

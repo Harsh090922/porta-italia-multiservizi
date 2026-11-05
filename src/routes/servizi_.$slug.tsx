@@ -13,15 +13,15 @@ export const Route = createFileRoute("/servizi_/$slug")({
   head: ({ loaderData, params }) => ({
     meta: loaderData
       ? [
-          { title: `${loaderData.title} – Porta Italia` },
+          { title: `${loaderData.title} – PraticheItalia` },
           { name: "description", content: loaderData.intro },
-          { property: "og:title", content: `${loaderData.title} – Porta Italia` },
+          { property: "og:title", content: `${loaderData.title} – PraticheItalia` },
           { property: "og:description", content: loaderData.intro },
           { property: "og:type", content: "article" },
           { property: "og:url", content: `/servizi/${params.slug}` },
           { name: "twitter:card", content: "summary" },
         ]
-      : [{ title: "Servizio non trovato – Porta Italia" }, { name: "robots", content: "noindex" }],
+      : [{ title: "Servizio non trovato – PraticheItalia" }, { name: "robots", content: "noindex" }],
   }),
   notFoundComponent: () => (
     <div className="container-page py-24 text-center">

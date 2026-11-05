@@ -5,7 +5,7 @@ export const CONTACT = {
   phone: "+39 000 000 0000",
   phoneHref: "tel:+390000000000",
   whatsapp: "https://wa.me/390000000000",
-  email: "info@portaitalia.it",
+  email: "info@praticheitalia.it",
   address: "Via Roma 1, 00100 Città (IT)",
   mapQuery: "Via Roma 1 Italia",
   hours: [
