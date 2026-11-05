@@ -7,9 +7,9 @@ import { useLang } from "@/lib/i18n";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Porta Italia – CAF, Patronato, Traduzioni e Servizi Consolari" },
+      { title: "PraticheItalia – CAF, Patronato, Traduzioni e Servizi Consolari" },
       { name: "description", content: "Assistenza fiscale, patronato, pratiche comunali, SPID, traduzioni e servizi consolari per Ambasciate e Consolati di tutti i Paesi. Semplice, chiaro, vicino a te." },
-      { property: "og:title", content: "Porta Italia – Burocrazia semplice, per tutti" },
+      { property: "og:title", content: "PraticheItalia – Burocrazia semplice, per tutti" },
       { property: "og:description", content: "CAF, Patronato, SPID, Comune, traduzioni e servizi consolari in un unico studio." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -58,14 +58,14 @@ function Index() {
             <Link to="/servizi" className="rounded-full border border-border px-6 py-3 font-semibold hover:bg-secondary">{t("Scopri i Servizi", "Explore our Services")}</Link>
           </div>
         </div>
-        <img src={hero} alt={t("Consulente Porta Italia con una famiglia", "Porta Italia adviser with a family")} width={1600} height={1104} className="rounded-3xl shadow-2xl" />
+        <img src={hero} alt={t("Consulente PraticheItalia con una famiglia", "PraticheItalia adviser with a family")} width={1600} height={1104} className="rounded-3xl shadow-2xl" />
       </section>
 
       <section className="bg-secondary py-20">
         <div className="container-page grid gap-10 md:grid-cols-[1fr_2fr]">
           <div><p className="eyebrow">{t("Chi siamo", "About us")}</p><h2 className="mt-3 text-3xl md:text-4xl">{t("Un unico sportello, tante risposte.", "One office, all the answers.")}</h2></div>
           <div className="space-y-4 text-lg text-muted-foreground">
-            <p>{t("Porta Italia è uno studio multiservizi che accompagna cittadini italiani e stranieri in ogni pratica fiscale, previdenziale e amministrativa.", "Porta Italia is a one-stop service office supporting Italian and foreign residents with every tax, social security and administrative matter.")}</p>
+            <p>{t("PraticheItalia è uno studio multiservizi che accompagna cittadini italiani e stranieri in ogni pratica fiscale, previdenziale e amministrativa.", "PraticheItalia is a one-stop service office supporting Italian and foreign residents with every tax, social security and administrative matter.")}</p>
             <p>{t("La nostra missione è semplice: trasformare procedure complesse in passaggi chiari, con trasparenza, ascolto e un'attenzione speciale alle comunità straniere in Italia.", "Our mission is simple: to turn complex procedures into clear steps, with transparency, a listening ear and special care for foreign communities in Italy.")}</p>
           </div>
         </div>

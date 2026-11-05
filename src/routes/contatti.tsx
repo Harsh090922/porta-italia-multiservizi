@@ -6,9 +6,9 @@ import { CONTACT, SERVICE_OPTIONS } from "@/lib/site";
 export const Route = createFileRoute("/contatti")({
   head: () => ({
     meta: [
-      { title: "Contatti e Prenotazioni – Porta Italia" },
-      { name: "description", content: "Prenota una consulenza con Porta Italia: modulo di contatto, WhatsApp e telefono." },
-      { property: "og:title", content: "Contatta Porta Italia" },
+      { title: "Contatti e Prenotazioni – PraticheItalia" },
+      { name: "description", content: "Prenota una consulenza con PraticheItalia: modulo di contatto, WhatsApp e telefono." },
+      { property: "og:title", content: "Contatta PraticheItalia" },
       { property: "og:description", content: "Scrivici, chiamaci o mandaci un WhatsApp: ti rispondiamo in giornata." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
