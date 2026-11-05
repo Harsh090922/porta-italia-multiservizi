@@ -2,7 +2,7 @@
 
 Ruolo e Obiettivo:
 
-Agisci come un esperto Web Designer e Copywriter. Il tuo compito è creare la struttura delle pagine e i testi per il sito web aziendale di "PORTA ITALIA", uno studio multiservizi specializzato in assistenza fiscale, burocratica e amministrativa, con un focus particolare anche sulla comunità indiana in Italia.
+Agisci come un esperto Web Designer e Copywriter. Il tuo compito è creare la struttura delle pagine e i testi per il sito web aziendale di "PRATICHEITALIA", uno studio multiservizi specializzato in assistenza fiscale, burocratica e amministrativa, con un focus particolare anche sulla comunità indiana in Italia.
 
 Tone of Voice:
 
@@ -59,24 +59,3 @@ Integrazione pulsante WhatsApp / Chiamata diretta.
 Fornisci i testi completi e accattivanti per ciascuna sezione della Homepage.
 
 Suggerisci la disposizione dei menu di navigazione (Header e Footer).
-
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/a5e3a005-4573-559a-a3b2-8cce67e0faf2).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
-```
