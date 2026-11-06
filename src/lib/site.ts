@@ -5,7 +5,7 @@ export const CONTACT = {
   phone: "+39 000 000 0000",
   phoneHref: "tel:+390000000000",
   whatsapp: "https://wa.me/390000000000",
-  email: "info@praticheitalia.it",
+  email: "info@praticheitalia.com",
   address: "Via Volturno 6/A, 43125 Parma (PR)",
   mapQuery: "Via Volturno 6/A, 43125 Parma PR",
   hours: [
