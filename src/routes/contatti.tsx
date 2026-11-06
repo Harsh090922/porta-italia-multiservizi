@@ -23,12 +23,45 @@ const field = "w-full rounded-xl border border-input bg-background px-4 py-3 out
 function Contatti() {
   const { lang, t } = useLang();
   const options = getServices(lang).map((s) => s.title);
-  const [f, setF] = useState({ nome: "", email: "", telefono: "", servizio: SERVICE_OPTIONS[0], messaggio: "" });
+  const [f, setF] = useState({ nome: "", email: "", telefono: "", servizio: "", data: "", messaggio: "", _gotcha: "" });
+  const [status, setStatus] = useState<"idle" | "sending" | "ok" | "error">("idle");
+  const [errMsg, setErrMsg] = useState("");
   const set = (k: keyof typeof f) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setF({ ...f, [k]: e.target.value });
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const body = `Nome: ${f.nome}\nEmail: ${f.email}\nTelefono: ${f.telefono}\nServizio: ${f.servizio}\n\n${f.messaggio}`;
-    window.location.href = `mailto:${CONTACT.email}?subject=${encodeURIComponent("Richiesta consulenza – " + f.servizio)}&body=${encodeURIComponent(body)}`;
+    if (status === "sending") return;
+    const endpoint = import.meta.env.VITE_FORMSPREE_ENDPOINT as string | undefined;
+    if (!endpoint || !endpoint.startsWith("https://")) {
+      setStatus("error");
+      setErrMsg(t("Il servizio di invio non è ancora configurato. Contattaci per telefono o WhatsApp.", "The sending service is not configured yet. Please contact us by phone or WhatsApp."));
+      return;
+    }
+    setStatus("sending");
+    try {
+      const servizio = SERVICE_OPTIONS[Number(f.servizio)] ?? f.servizio;
+      const res = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          _subject: `Richiesta appuntamento (DA CONFERMARE) – ${servizio}`,
+          stato: "Richiesta NON ancora confermata – da confermare manualmente via email",
+          nome: f.nome.trim(),
+          email: f.email.trim(),
+          _replyto: f.email.trim(),
+          telefono: f.telefono.trim() || "-",
+          servizio,
+          data_preferita: f.data || "-",
+          messaggio: f.messaggio.trim() || "-",
+          _gotcha: f._gotcha,
+        }),
+      });
+      if (!res.ok) throw new Error(String(res.status));
+      setStatus("ok");
+      setF({ nome: "", email: "", telefono: "", servizio: "", data: "", messaggio: "", _gotcha: "" });
+    } catch {
+      setStatus("error");
+      setErrMsg(t("Invio non riuscito. Controlla la connessione e riprova: i dati inseriti sono stati mantenuti.", "Sending failed. Check your connection and try again: your details have been kept."));
+    }
   };
   return (
     <div className="container-page grid gap-12 py-16 md:grid-cols-[1fr_1.3fr]">
@@ -46,15 +79,29 @@ function Contatti() {
         </ul>
       </div>
       <form onSubmit={submit} className="space-y-4 rounded-3xl border border-border bg-card p-8">
-        <input required placeholder={t("Nome e cognome", "Full name")} className={field} value={f.nome} onChange={set("nome")} />
+        <input required maxLength={100} placeholder={t("Nome e cognome *", "Full name *")} className={field} value={f.nome} onChange={set("nome")} />
         <div className="grid gap-4 sm:grid-cols-2">
-          <input required type="email" placeholder="Email" className={field} value={f.email} onChange={set("email")} />
-          <input type="tel" placeholder={t("Telefono", "Phone")} className={field} value={f.telefono} onChange={set("telefono")} />
+          <input required type="email" maxLength={255} placeholder="Email *" className={field} value={f.email} onChange={set("email")} />
+          <input type="tel" maxLength={30} placeholder={t("Telefono (facoltativo)", "Phone (optional)")} className={field} value={f.telefono} onChange={set("telefono")} />
         </div>
-        <select className={field} value={f.servizio} onChange={set("servizio")}>{options.map((s) => <option key={s}>{s}</option>)}</select>
-        <textarea required rows={5} placeholder={t("Come possiamo aiutarti?", "How can we help you?")} className={field} value={f.messaggio} onChange={set("messaggio")} />
+        <select required className={field} value={f.servizio} onChange={set("servizio")}>
+          <option value="" disabled>{t("Servizio richiesto *", "Service required *")}</option>
+          {options.map((s, i) => <option key={s} value={i}>{s}</option>)}
+        </select>
+        <label className="block text-sm text-muted-foreground">
+          {t("Data preferita (facoltativa)", "Preferred date (optional)")}
+          <input type="date" className={`${field} mt-1`} value={f.data} onChange={set("data")} />
+        </label>
+        <textarea rows={5} maxLength={2000} placeholder={t("Messaggio aggiuntivo (facoltativo)", "Additional message (optional)")} className={field} value={f.messaggio} onChange={set("messaggio")} />
+        <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" value={f._gotcha} onChange={set("_gotcha")} />
         <Consent />
-        <button className="w-full rounded-full bg-primary py-3 font-semibold text-primary-foreground hover:opacity-90">{t("Invia richiesta", "Send request")}</button>
+        <button disabled={status === "sending"} className="w-full rounded-full bg-primary py-3 font-semibold text-primary-foreground hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60">
+          {status === "sending" ? t("Invio in corso…", "Sending…") : t("Invia richiesta", "Send request")}
+        </button>
+        <div aria-live="polite">
+          {status === "ok" && <p className="rounded-xl bg-secondary p-4 text-sm font-medium text-primary">{t("Richiesta inviata correttamente. Ti contatteremo per confermare la disponibilità dell'appuntamento.", "Request sent successfully. We will contact you to confirm the availability of your appointment.")}</p>}
+          {status === "error" && <p role="alert" className="rounded-xl border border-destructive p-4 text-sm text-destructive">{errMsg}</p>}
+        </div>
       </form>
       <BusinessForm />
     </div>
