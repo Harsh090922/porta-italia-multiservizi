@@ -18,6 +18,8 @@ export const Route = createFileRoute("/contatti")({
   component: Contatti,
 });
 
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xaeekzgl";
+
 const field = "w-full rounded-xl border border-input bg-background px-4 py-3 outline-none focus:ring-2 focus:ring-ring";
 
 function Contatti() {
@@ -30,12 +32,7 @@ function Contatti() {
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (status === "sending") return;
-    const endpoint = import.meta.env["VITE_FORMSPREE_ENDPOINT"] as string | undefined;
-    if (!endpoint || !endpoint.startsWith("https://")) {
-      setStatus("error");
-      setErrMsg(t("Il servizio di invio non è ancora configurato. Contattaci per telefono o WhatsApp.", "The sending service is not configured yet. Please contact us by phone or WhatsApp."));
-      return;
-    }
+    const endpoint = FORMSPREE_ENDPOINT;
     setStatus("sending");
     try {
       const servizio = SERVICE_OPTIONS[Number(f.servizio)] ?? f.servizio;
@@ -134,12 +131,39 @@ function BusinessForm() {
   const { lang, t } = useLang();
   const en = lang === "en";
   const topics = BUSINESS_TOPICS.map(([it, enT]) => (en ? enT : it));
-  const [f, setF] = useState({ azienda: "", referente: "", email: "", telefono: "", ambito: BUSINESS_TOPICS[0][0], dipendenti: "", messaggio: "" });
+  const empty = { azienda: "", referente: "", email: "", telefono: "", ambito: "0", dipendenti: "", messaggio: "", _gotcha: "" };
+  const [f, setF] = useState(empty);
+  const [status, setStatus] = useState<"idle" | "sending" | "ok" | "error">("idle");
   const set = (k: keyof typeof f) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => setF({ ...f, [k]: e.target.value });
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const body = `Azienda: ${f.azienda}\nReferente: ${f.referente}\nEmail: ${f.email}\nTelefono: ${f.telefono}\nAmbito: ${f.ambito}\nLavoratori coinvolti: ${f.dipendenti || "-"}\n\n${f.messaggio}`;
-    window.location.href = `mailto:${CONTACT.email}?subject=${encodeURIComponent(`[AZIENDA] ${f.ambito} – ${f.azienda}`)}&body=${encodeURIComponent(body)}`;
+    if (status === "sending") return;
+    setStatus("sending");
+    try {
+      const ambito = BUSINESS_TOPICS[Number(f.ambito)]?.[0] ?? BUSINESS_TOPICS[0][0];
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          _subject: `[AZIENDA] ${ambito} – ${f.azienda.trim()}`,
+          tipo: "Richiesta informazioni aziendale",
+          azienda: f.azienda.trim(),
+          referente: f.referente.trim(),
+          email: f.email.trim(),
+          _replyto: f.email.trim(),
+          telefono: f.telefono.trim() || "-",
+          ambito,
+          lavoratori_coinvolti: f.dipendenti || "-",
+          messaggio: f.messaggio.trim(),
+          _gotcha: f._gotcha,
+        }),
+      });
+      if (!res.ok) throw new Error(String(res.status));
+      setStatus("ok");
+      setF(empty);
+    } catch {
+      setStatus("error");
+    }
   };
   return (
     <section id="aziende" className="scroll-mt-24 grid gap-8 rounded-3xl border border-border bg-secondary p-8 md:col-span-2 md:grid-cols-[1fr_1.3fr]">
@@ -155,11 +179,18 @@ function BusinessForm() {
           <input required type="email" maxLength={255} placeholder={t("Email aziendale", "Business email")} className={field} value={f.email} onChange={set("email")} />
           <input type="tel" maxLength={30} placeholder={t("Telefono", "Phone")} className={field} value={f.telefono} onChange={set("telefono")} />
         </div>
-        <select className={field} value={f.ambito} onChange={set("ambito")}>{topics.map((s) => <option key={s}>{s}</option>)}</select>
+        <select required className={field} value={f.ambito} onChange={set("ambito")}>{topics.map((s, i) => <option key={s} value={i}>{s}</option>)}</select>
         <input type="number" min={1} placeholder={t("N. lavoratori coinvolti (facoltativo)", "No. of workers involved (optional)")} className={field} value={f.dipendenti} onChange={set("dipendenti")} />
         <textarea required rows={4} maxLength={2000} placeholder={t("Descrivi la tua richiesta", "Describe your request")} className={field} value={f.messaggio} onChange={set("messaggio")} />
+        <input type="text" name="_gotcha" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" value={f._gotcha} onChange={set("_gotcha")} />
         <Consent />
-        <button className="w-full rounded-full bg-primary py-3 font-semibold text-primary-foreground hover:opacity-90">{t("Richiedi informazioni", "Request information")}</button>
+        <button disabled={status === "sending"} className="w-full rounded-full bg-primary py-3 font-semibold text-primary-foreground hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60">
+          {status === "sending" ? t("Invio in corso…", "Sending…") : t("Richiedi informazioni", "Request information")}
+        </button>
+        <div aria-live="polite">
+          {status === "ok" && <p className="rounded-xl bg-background p-4 text-sm font-medium text-primary">{t("Richiesta inviata correttamente. Ti invieremo una proposta entro un giorno lavorativo.", "Request sent successfully. We'll send you a proposal within one working day.")}</p>}
+          {status === "error" && <p role="alert" className="rounded-xl border border-destructive p-4 text-sm text-destructive">{t("Invio non riuscito. Controlla la connessione e riprova: i dati inseriti sono stati mantenuti.", "Sending failed. Check your connection and try again: your details have been kept.")}</p>}
+        </div>
       </form>
     </section>
   );
