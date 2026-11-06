@@ -30,7 +30,7 @@ function Contatti() {
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (status === "sending") return;
-    const endpoint = import.meta.env.VITE_FORMSPREE_ENDPOINT as string | undefined;
+    const endpoint = import.meta.env["VITE_FORMSPREE_ENDPOINT"] as string | undefined;
     if (!endpoint || !endpoint.startsWith("https://")) {
       setStatus("error");
       setErrMsg(t("Il servizio di invio non è ancora configurato. Contattaci per telefono o WhatsApp.", "The sending service is not configured yet. Please contact us by phone or WhatsApp."));
