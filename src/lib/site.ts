@@ -2,9 +2,9 @@ import { Landmark, HeartHandshake, Globe, Building2, Fingerprint, Languages, Shi
 import { SERVICE_DETAILS } from "./service-details";
 
 export const CONTACT = {
-  phone: "+39 000 000 0000",
-  phoneHref: "tel:+390000000000",
-  whatsapp: "https://wa.me/390000000000",
+  phone: "+39 351 005 2225",
+  phoneHref: "tel:+393510052225",
+  whatsapp: "https://wa.me/393510052225",
   email: "info@praticheitalia.com",
   address: "Via Volturno 6/A, 43125 Parma (PR)",
   mapQuery: "Via Volturno 6/A, 43125 Parma PR",
