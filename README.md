@@ -1,4 +1,4 @@
-# Porta Italia Multiservizi
+# Praticheitalia
 
 Ruolo e Obiettivo:
 
@@ -30,7 +30,7 @@ Homepage:
 
 Hero Section: Titolo d'impatto, sottotitolo chiaro, bottone Call to Action (es. "Prenota una Consulenza" / "Scopri i Servizi").
 
-Sezione "Chi Siamo": Breve presentazione di PORTA ITALIA e della sua missione.
+Sezione "Chi Siamo": Breve presentazione di PRATICHEITALIA e della sua missione.
 
 Griglia dei Servizi: Schede sintetiche per ciascuno dei 7 servizi principali con icone o immagini dedicate.
 
@@ -44,9 +44,9 @@ Pagina Dettaglio Servizi:
 
 Descrizione approfondita e suddivisa per macro-aree (CAF, Patronato, Consolato Indiano, Burocrazia Locale & Digitale, Lavoro).
 
-Pagina "Servizi Consolari per la Comunità Indiana":
+Pagina "Servizi Consolari per la Comunità straniera":
 
-Una sezione speciale dedicata interamente ai servizi per cittadini indiani in Italia (Passaporti, OCI, Legalizzazioni, Attestati) sia in italiano che in inglese.
+Una sezione speciale dedicata interamente ai servizi per cittadini stranieri in Italia (Passaporti, OCI, Legalizzazioni, Attestati) sia in italiano che in inglese.
 
 Pagina Contatti & Prenotazioni:
 
